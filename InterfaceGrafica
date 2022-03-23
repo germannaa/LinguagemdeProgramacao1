@@ -1,0 +1,27 @@
+import javax.swing.*;
+/**
+ *
+ * @author Aluno
+ */
+public class InterfaceGrafica1 {
+    public static void main(String[]args){
+        //criando os objetos JFrame(janela de trabalho) e JLabel(texto)
+        JFrame FRAME = new JFrame("Hello World!");
+        JLabel LABEL = new JLabel ("Minha primeira GUI com JAVA!!");
+        //retirando gerenciador de layout.
+        FRAME.setLayout(null);
+        //add contentpane e add a label
+        FRAME.getContentPane().add(LABEL);
+        //definir limites Label
+        LABEL.setBounds(30,30,200,20);
+        //tornar frame visivel
+        FRAME.setVisible(true);
+        //definir tamanho do frame
+        FRAME.setSize(300,200);
+        //deixa a tela mais bonita
+        FRAME.setDefaultLookAndFeelDecorated(true);
+        //comando quefecha a aplicação junto c a tela.
+        FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }
+}
