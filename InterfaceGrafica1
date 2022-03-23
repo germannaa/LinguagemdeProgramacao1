@@ -1,0 +1,38 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.*;
+import java.awt.Container;
+import javax.swing.JButton;
+
+public class JTextField {
+
+    public static void main(String[] args) {
+
+        JFrame SCREEN = new JFrame("Example JTextField");
+        JLabel LABELNAME = new JLabel("Name:");
+        JLabel LABELLASTNAME = new JLabel("Last Name:");
+        JTextField TEXTFIELDNAME = new JTextField();
+        JTextField TEXTFIELDLASTNAME = new JTextField();
+        JButton BUTTONSHOWNAME = new JButton("Show Full Name");
+
+        Container CONT = SCREEN.getContentPane();
+
+        CONT.add(LABELNAME);
+        CONT.add(LABELLASTNAME);
+        CONT.add(TEXTFIELDNAME);
+        CONT.add(TEXTFIELDLASTNAME);
+        CONT.add(BUTTONSHOWNAME);
+
+        SCREEN.setLayout(null); //para resetar os locais, colocar manualmente
+
+        LABELNAME.setBounds(20, 20, 300, 30);
+        TEXTFIELDNAME.setBounds(20, 60, 300, 30);
+        LABELLASTNAME.setBounds(20, 80, 300, 30);
+        TEXTFIELDLASTNAME.setBounds(20, 110, 300, 30);
+
+        SCREEN.setVisible(true);
+        SCREEN.setSize(400, 400);
+        SCREEN.setDefaultLookAndFeelDecorated(true);
+        SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
