@@ -1,38 +1,52 @@
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.*;
-import java.awt.Container;
+
 import javax.swing.JButton;
+import java.awt.Container;
+import javax.swing.*;
 
-public class JTextField {
 
-    public static void main(String[] args) {
+public class InterfaceGrafica1 {
+    
 
+    public static void main(String[]args){
+        //criando os objetos JFrame(janela de trabalho) e JLabel(texto)
+        //texto em cima da janela
         JFrame SCREEN = new JFrame("Example JTextField");
+        //Texto em cima da caixa
         JLabel LABELNAME = new JLabel("Name:");
         JLabel LABELLASTNAME = new JLabel("Last Name:");
+        //Criando caixas de texto com input do user
         JTextField TEXTFIELDNAME = new JTextField();
         JTextField TEXTFIELDLASTNAME = new JTextField();
+        //Criando botao para mostrar o nome completo depois de digitado
         JButton BUTTONSHOWNAME = new JButton("Show Full Name");
-
-        Container CONT = SCREEN.getContentPane();
-
-        CONT.add(LABELNAME);
-        CONT.add(LABELLASTNAME);
-        CONT.add(TEXTFIELDNAME);
-        CONT.add(TEXTFIELDLASTNAME);
-        CONT.add(BUTTONSHOWNAME);
-
-        SCREEN.setLayout(null); //para resetar os locais, colocar manualmente
-
-        LABELNAME.setBounds(20, 20, 300, 30);
-        TEXTFIELDNAME.setBounds(20, 60, 300, 30);
-        LABELLASTNAME.setBounds(20, 80, 300, 30);
-        TEXTFIELDLASTNAME.setBounds(20, 110, 300, 30);
-
+        
+        //Adicionando container (caixa)
+                Container CONT = SCREEN.getContentPane();
+                CONT.add(LABELNAME);
+                CONT.add(LABELLASTNAME);
+                CONT.add(TEXTFIELDNAME);
+                CONT.add(TEXTFIELDLASTNAME);
+                CONT.add(BUTTONSHOWNAME);
+                
+        //retirando gerenciador de layout.
+        SCREEN.setLayout(null);
+        //add contentpane e add a label
+        SCREEN.getContentPane().add(LABELNAME);
+        //definir limites Label
+        LABELNAME.setBounds(20,20,300,30);
+        TEXTFIELDNAME.setBounds(20, 50, 300, 30);
+        LABELLASTNAME.setBounds (20, 80, 300, 30);
+        TEXTFIELDLASTNAME.setBounds (20, 110, 300, 30);
+        
+        
+        //tornar frame visivel
         SCREEN.setVisible(true);
-        SCREEN.setSize(400, 400);
+        //definir tamanho do frame
+        SCREEN.setSize(400,400);
+        //deixar a tela mais bonita
         SCREEN.setDefaultLookAndFeelDecorated(true);
+        //comando quefecha a aplicação junto c a tela.
         SCREEN.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }
