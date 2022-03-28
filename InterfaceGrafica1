@@ -1,13 +1,21 @@
+import javax.swing.*; //importa pacote completo
+import javax.swing.JButton; //importa JButton
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-import javax.swing.JButton;
-import java.awt.Container;
-import javax.swing.*;
+import java.awt.*; //importa pacote completo
+import java.awt.event.*; //importa tudo
+import java.awt.Container; //importa container
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener; //importa ação do botão.
 
 
-public class InterfaceGrafica1 {
-    
 
-    public static void main(String[]args){
+
+
+public class INTGRAF {
+     public static void main(String[] args) {
         //criando os objetos JFrame(janela de trabalho) e JLabel(texto)
         //texto em cima da janela
         JFrame SCREEN = new JFrame("Example JTextField");
@@ -19,30 +27,102 @@ public class InterfaceGrafica1 {
         JTextField TEXTFIELDLASTNAME = new JTextField();
         //Criando botao para mostrar o nome completo depois de digitado
         JButton BUTTONSHOWNAME = new JButton("Show Full Name");
+        JLabel RESULTLABEL = new JLabel("");
+
         
+        SCREEN.setLayout(null); //para resetar os locais, colocar manualmente
+
         //Adicionando container (caixa)
-                Container CONT = SCREEN.getContentPane();
-                CONT.add(LABELNAME);
-                CONT.add(LABELLASTNAME);
-                CONT.add(TEXTFIELDNAME);
-                CONT.add(TEXTFIELDLASTNAME);
-                CONT.add(BUTTONSHOWNAME);
-                
-        //retirando gerenciador de layout.
-        SCREEN.setLayout(null);
-        //add contentpane e add a label
-        SCREEN.getContentPane().add(LABELNAME);
+        Container CONT = SCREEN.getContentPane();
+        CONT.add(LABELNAME);
+        CONT.add(LABELLASTNAME);
+        CONT.add(TEXTFIELDNAME);
+        CONT.add(TEXTFIELDLASTNAME);
+        //Colocando botão para mostrar os nomes, e a caixa com o resultado
+        CONT.add(BUTTONSHOWNAME);
+        CONT.add(RESULTLABEL);
+
         //definir limites Label
-        LABELNAME.setBounds(20,20,300,30);
+        LABELNAME.setBounds(20, 20, 300, 30);
         TEXTFIELDNAME.setBounds(20, 50, 300, 30);
-        LABELLASTNAME.setBounds (20, 80, 300, 30);
-        TEXTFIELDLASTNAME.setBounds (20, 110, 300, 30);
-        
-        
+        LABELLASTNAME.setBounds(20, 80, 300, 30);
+        TEXTFIELDLASTNAME.setBounds(20, 110, 300, 30);
+        BUTTONSHOWNAME.setBounds(20, 140, 300, 30);
+        RESULTLABEL.setBounds(20,170,300,30);
+
+        //Add uma ação no botão
+        BUTTONSHOWNAME.addActionListener(new ActionListener() {
+            //criando classe anonima
+            @Override //sobrecarga
+            public void actionPerformed(ActionEvent e) {
+                //Juntando os textos das duas caixas
+                String name = TEXTFIELDNAME.getText();
+                String lastName = TEXTFIELDLASTNAME.getText();
+
+                if (name.equals("")) {
+                    String nameResult = JOptionPane.showInputDialog(null, "Enter with your first name: ", "ERROR First name!", 1);
+                    TEXTFIELDNAME.setText(nameResult);
+                } else if (lastName.equals("")) {
+                    String nameResult = JOptionPane.showInputDialog(null, "Enter with your last name: ", "ERROR Last name!", 1);
+                    TEXTFIELDLASTNAME.setText(nameResult);
+                   
+                    
+                    /*if (name.equals("") || lastName.equals("")){
+                 
+                 //Criando uma pop-up, com 'ok' e retornando nulo (fechando a caixa)
+                 JOptionPane.showMessageDialog(null, "Invalid Name", "ERROR", 1);
+                 RESULTLABEL.setText("");
+                 //Colocando mensagem caso alguma caixa esteja vazia*/
+                
+                                            //Retundante
+                                           //} else if (name.equals("") && lastName.equals("")) {
+                                           //  JOptionPane.showMessageDialog(null, "Empty Fields", "ERROR", 1);
+
+                } else {
+
+                    String hello = "Hello Mr(s) " + name + " " + lastName;
+                    RESULTLABEL.setText(hello);
+                    TEXTFIELDNAME.setText("");
+                    TEXTFIELDLASTNAME.setText("");
+                }
+            }
+        });
+
+
+        /*
+      class EventButton implements ActionListener {
+          //criando uma classe interna (Inner Class)
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             
+       //Juntando os textos das duas caixas (mesma estrutura da classe anonima)
+             String name = TEXTFIELDNAME.getText();
+             String lastName = TEXTFIELDLASTNAME.getText();
+             if (name.equals("") || lastName.equals("")){
+                 RESULTLABEL.setText("Invalid Name!");
+                 //Colocando mensagem caso alguma caixa esteja vazia
+             }else{
+       
+             String hello = "Hello Mr(s) " + name + " " + lastName;
+             RESULTLABEL.setText (hello);
+             TEXTFIELDNAME.setText("");
+             TEXTFIELDLASTNAME.setText("");
+            }
+            }
+        }
+     
+     EventButton buttonAction = new EventButton();
+     BUTTONSHOWNAME.addActionListener(buttonAction);
+         */
+         
+         
+         
+         
         //tornar frame visivel
         SCREEN.setVisible(true);
+        SCREEN.setSize(400, 400);
         //definir tamanho do frame
-        SCREEN.setSize(400,400);
+        SCREEN.setSize(400, 400);
         //deixar a tela mais bonita
         SCREEN.setDefaultLookAndFeelDecorated(true);
         //comando quefecha a aplicação junto c a tela.
