@@ -1,0 +1,196 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+
+public class InterfaceGrafica02 extends JFrame {
+    //criar fora do construtor
+    JLabel titulo;
+    JTextField total;
+    JCheckBox arCond;
+    JCheckBox dirHidr;
+    JCheckBox pintMet;
+    JCheckBox sistMid;
+    JCheckBox cambAut;
+    JCheckBox camRe;
+    
+    //valores de cada item a ser selecionado
+    long valortotal = 0;
+    long arCond_value = 2000;
+    long dirHidr_value = 1200;
+    long pintMet_value = 800;
+    long sisMid_value = 2500;
+    long cambAut_value = 1800;
+    long cam_value = 500;
+    
+    //Adicionando na tela
+    public InterfaceGrafica02(String title){
+        super(title);
+        
+        Container CONTAINER = getContentPane();
+        //setar tamanho da janela
+        setSize(300,350);
+        //tornar visivel
+        setVisible(true);
+        
+        //instanciando
+        titulo = new JLabel("Acessorios Disponiveis:");
+        total = new JTextField();
+        arCond =  new JCheckBox("Ar Condicionado");
+        dirHidr = new JCheckBox("Direção Hidraulica");
+        pintMet = new JCheckBox("Pintura Metalica");
+        sistMid= new JCheckBox("Sistema de Midia");
+        cambAut = new JCheckBox("Cambio Automatico");
+        camRe = new JCheckBox("Camera de Ré");
+        
+        //deixar nenhum item selecionado, por padrão
+        arCond.setSelected(false);
+        dirHidr.setSelected(false);
+        pintMet.setSelected(false);
+        sistMid.setSelected(false);
+        cambAut.setSelected(false);
+        camRe.setSelected(false);
+        
+        //tornar layout nulo
+        setLayout(null);
+        
+        //add nos containers
+        CONTAINER.add(titulo);
+        CONTAINER.add(total);
+        CONTAINER.add(arCond);
+        CONTAINER.add(dirHidr);
+        CONTAINER.add(pintMet);
+        CONTAINER.add(sistMid);
+        CONTAINER.add(cambAut);
+        CONTAINER.add(camRe);
+        
+        //alinhar total no centro do JTextField
+        total.setHorizontalAlignment(JTextField.CENTER);
+        
+        //posicionamento 
+        titulo.setBounds(20, 20, 180, 30);
+        arCond.setBounds(20, 60, 150, 30);
+        dirHidr.setBounds(20, 90, 150, 30);
+        pintMet.setBounds(20, 120, 150, 30);
+        sistMid.setBounds(20, 150, 150, 30);
+        cambAut.setBounds(20, 180, 150, 30);
+        camRe.setBounds(20, 210, 150, 30);
+        total.setBounds(20, 260, 160, 30);
+        
+        //gerando ação nos botoes + nomes das classes internas na ação
+        arCond.addActionListener(new ArCondicionado());
+        dirHidr.addActionListener(new DirecaoHidraulica());
+        pintMet.addActionListener(new PinturaMetalica());
+        sistMid.addActionListener(new SistemaMidias());
+        cambAut.addActionListener(new CambioAutomatico());
+        camRe.addActionListener(new CameraRe());
+        
+        //Atuaizar um valor no total sempre que uma caixa for selecionada ou nao
+        total.setText(String.valueOf(valortotal));
+    }
+    
+        //Criando as classes internas para adicionar ação nos botoes
+private class ArCondicionado implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (arCond.isSelected()){
+                    valortotal += arCond_value;
+                } else{
+                    valortotal -= arCond_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+        
+private class DirecaoHidraulica implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (dirHidr.isSelected()){
+                    valortotal += dirHidr_value;
+                } else{
+                    valortotal -= dirHidr_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+        
+private class PinturaMetalica implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (pintMet.isSelected()){
+                    valortotal += pintMet_value;
+                } else{
+                    valortotal -= pintMet_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+
+private class SistemaMidias implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (sistMid.isSelected()){
+                    valortotal += sisMid_value;
+                } else{
+                    valortotal -= sisMid_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+        
+private class CambioAutomatico implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (cambAut.isSelected()){
+                    valortotal += cambAut_value;
+                } else{
+                    valortotal -= cambAut_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+        
+private class CameraRe implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                valortotal = Long.parseLong(total.getText());
+                if (camRe.isSelected()){
+                    valortotal += cam_value;
+                } else{
+                    valortotal -= cam_value;
+                }
+                total.setText(String.valueOf(valortotal));
+            }
+        }
+        
+        
+        
+        
+    
+        
+public static void main (String[] args){
+            JFrame.setDefaultLookAndFeelDecorated(true);
+            InterfaceGrafica02 JCheckBox = new InterfaceGrafica02("Exemplo JCheckBox");
+            JCheckBox.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+        }
+        
+    }
+        
+    
+    
+    
+
+
+    
