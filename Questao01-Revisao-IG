@@ -1,0 +1,24 @@
+
+import javax.swing.*;
+
+    
+public class Questao01 {
+    
+
+    public static void main(String[]args){
+        
+        JFrame FRAME = new JFrame("Olá Mundo!");
+        JLabel LABEL = new JLabel ("Bem vindo a minha primeira GUI!!");
+        
+        FRAME.setLayout(null);
+        FRAME.getContentPane().add(LABEL);
+        LABEL.setBounds(30,30,200,20);
+        FRAME.setVisible(true);
+        FRAME.setSize(300,200);
+
+        FRAME.setDefaultLookAndFeelDecorated(true);
+        FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }
+}
+
